@@ -35,13 +35,14 @@ const io = new Server(server, {
 });
 
 const PORT = process.env.PORT;
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
 // Make io available globally
 global.io = io;
 
 // CORS configuration
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174'], // Support both ports
+  origin: NODE_ENV === "development" ? ['http://localhost:5173', 'http://localhost:5174'] : process.env.CLIENT_URL, // Support both ports in development, use CLIENT_URL in production
   credentials: true, // Allow cookies to be sent
 }));
 
