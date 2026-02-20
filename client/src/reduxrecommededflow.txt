@@ -1,0 +1,48 @@
+client/src/store/
+│
+├── store.js                          # Main Redux store
+│
+├── auth/                             # ✅ SHARED (User + Admin)
+│   ├── authSlice.js                 # Login/logout/getAuthUser
+│   └── authThunk.js
+│
+├── user/                             # User features
+│   ├── userSlice.js
+│   ├── userThunk.js
+│   ├── complaint/
+│   │   ├── complaintSlice.js
+│   │   └── complaintThunk.js
+│   ├── contact/
+│   │   ├── contactSlice.js
+│   │   └── contactThunk.js
+│   ├── logbook/
+│   │   ├── logbookSlice.js
+│   │   └── logbookThunk.js
+│   └── notification/
+│       ├── notificationSlice.js
+│       └── notificationThunk.js
+│
+├── admin/                            # 👇 NEW ADMIN STRUCTURE
+│   ├── dashboard/
+│   │   ├── dashboardSlice.js
+│   │   └── dashboardThunk.js
+│   ├── complaint/
+│   │   ├── complaintSlice.js
+│   │   └── complaintThunk.js
+│   ├── logbook/
+│   │   ├── logbookSlice.js
+│   │   └── logbookThunk.js
+│   ├── notification/
+│   │   ├── notificationSlice.js
+│   │   └── notificationThunk.js
+│   ├── announcement/
+│   │   ├── announcementSlice.js
+│   │   └── announcementThunk.js
+│   └── profile/
+│       ├── profileSlice.js
+│       └── profileThunk.js
+│
+└── shared/
+    └── socket/
+        ├── socketSlice.js
+        └── socketMiddleware.js

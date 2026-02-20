@@ -1,0 +1,17 @@
+import axios from "axios";
+
+// re-usable instance
+const BACKEND_URL = import.meta.env.MODE === 'production' ? `${import.meta.env.VITE_BACKEND_URL}/api` : "http://localhost:5000/api";
+
+// console.log("Calling Backend URL:", BACKEND_URL);
+
+const axiosInstance = axios.create({
+  baseURL: BACKEND_URL, //  Backend URL
+  headers: {
+    "Content-Type": "application/json",
+  },
+  withCredentials: true, // using cookies
+});
+
+
+export default axiosInstance;
