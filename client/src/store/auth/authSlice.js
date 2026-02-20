@@ -86,13 +86,24 @@ const authSlice = createSlice({
         state.user = null;
       })
       .addCase(userLogoutThunk.rejected, (state, action) => {
-        
+        state.isAuthenticated = false;
+        state.loading = false;
+        state.role = null;
+        state.user = null;
+        state.error = action.payload || "Logout failed";
       })
       .addCase(adminLogoutThunk.fulfilled, (state, action) => {
         state.isAuthenticated = false;
         state.loading = false;
         state.role = null;
         state.admin = null;
+      })
+      .addCase(adminLogoutThunk.rejected, (state, action) => {
+        state.isAuthenticated = false;
+        state.loading = false;
+        state.role = null;
+        state.admin = null;
+        state.error = action.payload || "Logout failed";
       })
   },
 });

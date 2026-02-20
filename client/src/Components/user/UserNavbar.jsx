@@ -7,12 +7,17 @@ import { userLogoutThunk } from '../../store/auth/authThunk.js'
 const UserNavbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [showLogoutModal, setShowLogoutModal] = useState(false)
+  const navigate = useNavigate()
 
   const dispatch = useDispatch()
-  const handleLogout = () => {
-    dispatch(userLogoutThunk())
+  const handleLogout = async () => {
+    try {
+      await dispatch(userLogoutThunk()).unwrap()
+    } catch (error) {
+    }
     setShowLogoutModal(false)
     setIsMobileMenuOpen(false)
+    navigate('/login', { replace: true })
   }
 
   return (

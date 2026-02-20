@@ -62,7 +62,12 @@ export const login = async (req, res) => {
 
 // Admin logout
 export const logout = (req, res) => {
-  res.clearCookie("admin_jwt");
+  res.clearCookie("admin_jwt", {
+    httpOnly: true,
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    secure: process.env.NODE_ENV === 'production',
+    path: '/'
+  });
   res.status(200).json({ 
     success: true, 
     message: "Logout successful" 
